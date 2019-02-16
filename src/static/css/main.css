@@ -1,3 +1,50 @@
 main {
     grid-area: main;
 }
+
+main > .container {
+    display: grid;
+    grid-template-areas: "title" "todo";
+}
+
+/* title */
+main > .container > .title {
+    grid-area: title;
+}
+
+main > .container > ul {
+    list-style: none;
+    grid-area: todo;
+}
+
+main > .container > ul > li > .todo {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    margin-bottom: 1vh;
+}
+
+/* todos description */
+main > .container > ul > li > .todo > .todo-desc {
+
+    background: rgb(230, 230, 230);
+}
+
+main > .container > ul > li > .todo > .todo-desc > p {
+    padding-left: 2vw;
+}
+
+/* actions */
+main > .container > ul > li > .todo > .actions {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+main > .container > ul > li > .todo > .actions > a {
+    border-radius: 0;
+}
+
+main > .container > ul > li > .todo > .actions > a > p {
+    margin: 0;
+    margin-top: 5px;
+    text-align: center;
+}

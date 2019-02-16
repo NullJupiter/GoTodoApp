@@ -19,8 +19,3 @@ header > .container > .logout {
     justify-self: end;
     align-self: center;
 }
-
-header > .container > .logout > a {
-    text-decoration: none;
-    color: rgb(240, 240, 240);
-}
