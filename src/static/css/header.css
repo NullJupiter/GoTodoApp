@@ -1,0 +1,26 @@
+header {
+    background: #111;
+    color: rgb(240, 240, 240);
+
+    grid-area: header;
+}
+
+header > .container {
+    display: grid;
+    grid-template-areas: "logo logout"
+}
+
+header > .container > .logo {
+    grid-area: logo;
+}
+
+header > .container > .logout {
+    grid-area: logout;
+    justify-self: end;
+    align-self: center;
+}
+
+header > .container > .logout > a {
+    text-decoration: none;
+    color: rgb(240, 240, 240);
+}
