@@ -45,6 +45,5 @@ main > .container > ul > li > .todo > .actions > a {
 
 main > .container > ul > li > .todo > .actions > a > p {
     margin: 0;
-    margin-top: 5px;
     text-align: center;
 }
