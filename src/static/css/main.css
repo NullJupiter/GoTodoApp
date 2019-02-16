@@ -4,12 +4,18 @@ main {
 
 main > .container {
     display: grid;
-    grid-template-areas: "title" "todo";
+    grid-template-areas: "title add" "todo todo";
+    grid-template-columns: 1fr auto;
 }
 
 /* title */
 main > .container > .title {
     grid-area: title;
+}
+
+/* add button */
+main > .container > .add {
+    grid-area: add
 }
 
 main > .container > ul {
@@ -37,10 +43,6 @@ main > .container > ul > li > .todo > .todo-desc > p {
 main > .container > ul > li > .todo > .actions {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-}
-
-main > .container > ul > li > .todo > .actions > a {
-    border-radius: 0;
 }
 
 main > .container > ul > li > .todo > .actions > a > p {
