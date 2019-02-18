@@ -1,5 +1,7 @@
 main {
     grid-area: main;
+
+    margin-top: 1em;
 }
 
 main > .container {
@@ -18,10 +20,7 @@ main > .container > .add > form {
 }
 
 main > .container > .add > form > .add-text {
-    border: 1px solid rgb(230, 230, 230);
-    border-right: none;
-
-    font-size: 20px;
+    font-size: 18px;
     padding: 10px;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -47,11 +46,16 @@ main > .container > ul > li > .todo {
     display: grid;
     grid-template-columns: 3fr 1fr;
     margin-bottom: 1vh;
+
+    box-shadow: 2px 2px 4px rgb(133, 133, 133);
+}
+
+main > .container > ul > li > .todo:hover {
+    box-shadow: 4px 4px 4px rgb(133, 133, 133);
 }
 
 /* todos description */
 main > .container > ul > li > .todo > .todo-desc {
-
     background: rgb(230, 230, 230);
 }
 
