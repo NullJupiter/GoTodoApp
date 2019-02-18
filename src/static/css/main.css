@@ -4,23 +4,43 @@ main {
 
 main > .container {
     display: grid;
-    grid-template-areas: "title add" "todo todo";
+    grid-template-areas: "add" "todo";
     grid-template-columns: 1fr auto;
 }
 
-/* title */
-main > .container > .title {
-    grid-area: title;
+/* add button */
+main > .container > .add > form {
+    grid-area: add;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    
+    box-shadow: 2px 2px 4px rgb(133, 133, 133);
 }
 
-/* add button */
-main > .container > .add {
-    grid-area: add
+main > .container > .add > form > .add-text {
+    border: 1px solid rgb(230, 230, 230);
+    border-right: none;
+
+    font-size: 20px;
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* divider (hr) */
+main > .container > .add > hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid rgb(180, 180, 180);
+    margin: 1em 0;
+    margin-top: 2.5em;
+    padding: 0; 
 }
 
 main > .container > ul {
     list-style: none;
     grid-area: todo;
+    padding: 0;
 }
 
 main > .container > ul > li > .todo {
