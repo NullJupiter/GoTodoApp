@@ -1,3 +1,4 @@
+{{ define "register" }}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -5,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="../../static/css/all.css">
-    <link rel="stylesheet" href="../../static/css/footer.css">
-    <link rel="stylesheet" href="../../static/css/login_and_register.css">
+    <link rel="stylesheet" href="/static/css/all.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/login_and_register.css">
     <title>Login - Todo App</title>
 </head>
 <body>
@@ -22,7 +23,7 @@
                     <input type="password" name="pwd" class="pwd-text-field" autocomplete="off" placeholder="New Password">
                     <input type="submit" value="Sign Up" class="btn orange large">
                     <div class="bottom-text">
-                        <a href="#" class="btn small">You can sign in here.</a>
+                        <a href="/login" class="btn small">You can sign in here.</a>
                     </div>
                 </form>
                 
@@ -31,14 +32,8 @@
     </main>
 
     <footer>
-        <div class="container">
-            <div class="copyright">
-                <p>Copyright Mark Haube 2019 © All rights reserved.</p>
-            </div>
-            <div class="back-to-top">
-                <a href="#top">Back to top <i class="material-icons" style="position: relative; top: 5px;">keyboard_arrow_up</i></a>
-            </div>
-        </div>
+        {{ template "footer" }}
     </footer>
 </body>
 </html>
+{{ end }}
