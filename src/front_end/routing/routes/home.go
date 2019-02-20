@@ -3,7 +3,7 @@ package routes
 import (
 	"net/http"
 
-	"github.com/NullJupiter/GoTodoApp/src/templating"
+	"github.com/NullJupiter/GoTodoApp/src/front_end/templating"
 )
 
 // MainGetHandler function is used to handle GET requests on /home

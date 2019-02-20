@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/NullJupiter/GoTodoApp/src/templating"
+	"github.com/NullJupiter/GoTodoApp/src/front_end/templating"
 
-	"github.com/NullJupiter/GoTodoApp/src/routing"
+	"github.com/NullJupiter/GoTodoApp/src/front_end/routing"
 )
 
 func main() {

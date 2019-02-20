@@ -3,7 +3,7 @@ package routing
 import (
 	"net/http"
 
-	"github.com/NullJupiter/GoTodoApp/src/routing/routes"
+	"github.com/NullJupiter/GoTodoApp/src/front_end/routing/routes"
 	"github.com/gorilla/mux"
 )
 
