@@ -13,12 +13,12 @@ func ValidateUserGetHandler(w http.ResponseWriter, r *http.Request) {
 	passwordHash := r.FormValue("passwordHash")
 
 	isLegit, err := queries.ValidateUser(username, passwordHash)
-	if err != nil {
-		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
-		return
-	}
 	if !isLegit {
 		w.Write([]byte("This user account doesn't exist!"))
+		return
+	}
+	if err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
 
