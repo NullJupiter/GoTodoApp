@@ -1,6 +1,8 @@
 package helper
 
 import (
+	"database/sql"
+
 	"github.com/NullJupiter/GoTodoApp/src/data_api/db"
 )
 
@@ -11,6 +13,9 @@ func GetUIDForUname(username string) (int, error) {
 	row := db.GetDB().QueryRow("SELECT id FROM users WHERE username=$1;", username)
 	var uid int
 	err = row.Scan(&uid)
+	if err == sql.ErrNoRows {
+		return 0, nil
+	}
 	if err != nil {
 		return 0, err
 	}

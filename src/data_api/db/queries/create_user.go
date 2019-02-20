@@ -13,9 +13,12 @@ var err error
 // It also creates a new user specific table for the users todos.
 func CreateUserEntry(username string, passwordHash string) error {
 	// Check if user already exists
-	uidCheck, _ := helper.GetUIDForUname(username)
+	uidCheck, err := helper.GetUIDForUname(username)
 	if uidCheck != 0 {
 		return fmt.Errorf("user already exists")
+	}
+	if err != nil {
+		return err
 	}
 
 	// Create user entry in users table
