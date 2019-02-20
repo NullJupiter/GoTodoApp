@@ -37,7 +37,9 @@ func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 	if err.Error() == "user already exists" {
 		w.Write([]byte("Could not create user account because this username already exists."))
 		return
-	} else if err != nil {
+	}
+	fmt.Println(err.Error())
+	if err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
