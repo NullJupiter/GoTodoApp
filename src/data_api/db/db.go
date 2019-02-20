@@ -9,11 +9,12 @@ import (
 
 // DB is a public DB instance
 var DB *sql.DB
+var err error
 
 // InitDB function is used to connect to a postgres database
 func InitDB(dbURI string) error {
 	// Open database connection
-	DB, err := sql.Open("postgres", dbURI)
+	DB, err = sql.Open("postgres", dbURI)
 	if err != nil {
 		return err
 	}
