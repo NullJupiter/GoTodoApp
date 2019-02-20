@@ -7,7 +7,7 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var db sql.DB
+var db *sql.DB
 
 // InitDB function is used to connect to a postgres database
 func InitDB(dbURI string) error {
@@ -27,6 +27,6 @@ func InitDB(dbURI string) error {
 }
 
 // GetDB function is used to get the initialized database object from other packages
-func GetDB() sql.DB {
+func GetDB() *sql.DB {
 	return db
 }

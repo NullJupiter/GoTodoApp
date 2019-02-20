@@ -19,8 +19,8 @@ func GetUIDForUname(username string) int {
 	if err != nil {
 		return 0
 	}*/
-
-	rows, err := db.GetDB().Query("SELECT id FROM users WHERE username=$1", username)
+	db := db.GetDB()
+	rows, err := db.Query("SELECT id FROM users WHERE username=$1", username)
 	if err != nil {
 		return 0
 	}
