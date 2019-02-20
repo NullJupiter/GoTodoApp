@@ -14,7 +14,7 @@ func GetUIDForUname(username string) int {
 	var uid int
 	var uname string
 	var pass string
-	err := db.GetDB().QueryRow("SELECT id FROM users WHERE username='NullJupiter;").Scan(&uid, &uname, &pass)
+	err := db.GetDB().QueryRow("SELECT * FROM users WHERE username='NullJupiter;").Scan(&uid, &uname, &pass)
 	if err == sql.ErrNoRows {
 		return 0
 	}
