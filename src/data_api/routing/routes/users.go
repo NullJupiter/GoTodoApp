@@ -6,3 +6,7 @@ import "net/http"
 func OneUserGetHandler(w http.ResponseWriter, r *http.Request) {
 
 }
+
+func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
+
+}
