@@ -10,7 +10,7 @@ import (
 // GetUIDForUname function is used to query the id for a specific username
 func GetUIDForUname(username string) int {
 	var uid int
-	err := db.GetDB().QueryRow("SELECT id FROM users WHERE username=$1;", username).Scan(&uid)
+	err := db.DB.QueryRow("SELECT id FROM users WHERE username=$1;", username).Scan(&uid)
 	fmt.Println(uid)
 	if err == sql.ErrNoRows {
 		return 0
@@ -24,7 +24,7 @@ func GetUIDForUname(username string) int {
 
 // GetUIDForUnameAndPass function is used to query the id for a specific username password combination
 func GetUIDForUnameAndPass(username, passwordHash string) (int, error) {
-	row := db.GetDB().QueryRow("SELECT id FROM users WHERE username=$1 AND passwordHash=$2", username, passwordHash)
+	row := db.DB.QueryRow("SELECT id FROM users WHERE username=$1 AND passwordHash=$2", username, passwordHash)
 	var uid int
 	err := row.Scan(&uid)
 	if err != nil {
