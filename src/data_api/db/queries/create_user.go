@@ -2,7 +2,6 @@ package queries
 
 import (
 	"fmt"
-	"net/http"
 
 	"github.com/NullJupiter/GoTodoApp/src/data_api/db"
 	"github.com/NullJupiter/GoTodoApp/src/data_api/db/queries/helper"
@@ -29,8 +28,7 @@ func CreateUserEntry(username string, passwordHash string) error {
 	// Create user specific table for user
 	uid := helper.GetUIDForUname(username)
 	if uid == 0 {
-		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
-		return
+		return err
 	}
 
 	fmt.Println(3)
