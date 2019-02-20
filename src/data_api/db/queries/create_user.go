@@ -12,7 +12,7 @@ import (
 func CreateUserEntry(username string, passwordHash string) error {
 	// Check if user already exists
 	uidCheck := helper.GetUIDForUname(username)
-	if uidCheck != 0 {
+	if uidCheck != "0" {
 		return fmt.Errorf("user already exists")
 	}
 
@@ -27,7 +27,7 @@ func CreateUserEntry(username string, passwordHash string) error {
 
 	// Create user specific table for user
 	uid := helper.GetUIDForUname(username)
-	if uid == 0 {
+	if uid == "0" {
 		return err
 	}
 

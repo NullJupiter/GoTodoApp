@@ -10,16 +10,16 @@ import (
 var ctx = context.Background()
 
 // GetUIDForUname function is used to query the id for a specific username
-func GetUIDForUname(username string) int {
-	var uid int
+func GetUIDForUname(username string) string {
+	var uid string
 	var uname string
 	var pass string
 	err := db.GetDB().QueryRow("SELECT * FROM users WHERE username='NullJupiter;").Scan(&uid, &uname, &pass)
 	if err == sql.ErrNoRows {
-		return 0
+		return "0"
 	}
 	if err != nil {
-		return 0
+		return "0"
 	}
 
 	return uid
