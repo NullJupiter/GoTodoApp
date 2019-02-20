@@ -14,7 +14,7 @@ var err error
 func CreateUserEntry(username string, passwordHash string) error {
 	// Check if user already exists
 	uidCheck, err := helper.GetUIDForUname(username)
-	if uidCheck != 0 || err != nil {
+	if uidCheck != 0 {
 		return fmt.Errorf("user already exists")
 	}
 
