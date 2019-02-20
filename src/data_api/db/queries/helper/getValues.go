@@ -10,7 +10,8 @@ import (
 // GetUIDForUname function is used to query the id for a specific username
 func GetUIDForUname(username string) int {
 	uid := 0
-	err := db.DB.QueryRow("SELECT id FROM users WHERE username=$1;", username).Scan(&uid)
+	row := db.DB.QueryRow("SELECT id FROM users WHERE username=$1;", username)
+	err := row.Scan(&uid)
 	fmt.Println(uid)
 	if err == sql.ErrNoRows {
 		return 0
