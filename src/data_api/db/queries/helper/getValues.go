@@ -2,17 +2,15 @@ package helper
 
 import (
 	"database/sql"
-	"fmt"
 
 	"github.com/NullJupiter/GoTodoApp/src/data_api/db"
 )
 
 // GetUIDForUname function is used to query the id for a specific username
 func GetUIDForUname(username string) int {
-	uid := 0
-	row := db.DB.QueryRow("SELECT id FROM users WHERE username=$1;", username)
+	var uid int
+	row := db.GetDB().QueryRow("SELECT id FROM users WHERE username=$1;", username)
 	err := row.Scan(&uid)
-	fmt.Println(uid)
 	if err == sql.ErrNoRows {
 		return 0
 	}
@@ -25,7 +23,7 @@ func GetUIDForUname(username string) int {
 
 // GetUIDForUnameAndPass function is used to query the id for a specific username password combination
 func GetUIDForUnameAndPass(username, passwordHash string) (int, error) {
-	row := db.DB.QueryRow("SELECT id FROM users WHERE username=$1 AND passwordHash=$2", username, passwordHash)
+	row := db.GetDB().QueryRow("SELECT id FROM users WHERE username=$1 AND passwordHash=$2", username, passwordHash)
 	var uid int
 	err := row.Scan(&uid)
 	if err != nil {

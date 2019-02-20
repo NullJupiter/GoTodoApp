@@ -8,20 +8,20 @@ import (
 )
 
 // DB is a public DB instance
-var DB *sql.DB
+var db *sql.DB
 var err error
 
 // InitDB function is used to connect to a postgres database
 func InitDB(dbURI string) error {
 	// Open database connection
-	DB, err = sql.Open("postgres", dbURI)
+	db, err = sql.Open("postgres", dbURI)
 	if err != nil {
 		return err
 	}
 
 	// Validate that the connection to the database is established
 
-	if err = DB.Ping(); err != nil {
+	if err = db.Ping(); err != nil {
 		return err
 	}
 
@@ -29,6 +29,6 @@ func InitDB(dbURI string) error {
 }
 
 // GetDB function is used to get the initialized database object from other packages
-/*func GetDB() *sql.DB {
+func GetDB() *sql.DB {
 	return db
-}*/
+}
