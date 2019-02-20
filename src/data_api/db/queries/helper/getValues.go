@@ -1,16 +1,20 @@
 package helper
 
 import (
+	"context"
 	"database/sql"
+	"time"
 
 	"github.com/NullJupiter/GoTodoApp/src/data_api/db"
 )
 
+var ctx = context.Background()
+
 // GetUIDForUname function is used to query the id for a specific username
 func GetUIDForUname(username string) int {
-	row := db.GetDB().QueryRow("SELECT id FROM users WHERE username=$1;", username)
 	var uid int
-	err := row.Scan(&uid)
+	var created time.Time
+	err := db.GetDB().QueryRowContext(ctx, "SELECT id FROM users WHERE username=$1;", username).Scan(&uid, &created)
 	if err == sql.ErrNoRows {
 		return 0
 	}
