@@ -40,4 +40,6 @@ func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
+
+	w.Write([]byte("User has successfully been added."))
 }
