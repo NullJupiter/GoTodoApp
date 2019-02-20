@@ -8,7 +8,7 @@ import (
 )
 
 // DB is a public DB instance
-var DB sql.DB
+var DB *sql.DB
 
 // InitDB function is used to connect to a postgres database
 func InitDB(dbURI string) error {
