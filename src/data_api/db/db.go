@@ -12,7 +12,14 @@ var db *sql.DB
 
 // InitDB function is used to connect to a postgres database
 func InitDB(dbURI string) error {
+	// Open database connection
 	db, err = sql.Open("postgres", dbURI)
+	if err != nil {
+		return err
+	}
+
+	// Validate that the connection to the database is established
+	err = db.Ping()
 	if err != nil {
 		return err
 	}
