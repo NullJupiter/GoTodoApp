@@ -1,7 +1,6 @@
 package routes
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/NullJupiter/GoTodoApp/src/data_api/db/queries"
@@ -33,12 +32,10 @@ func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 	passwordHash := r.FormValue("passwordHash")
 
 	err := queries.CreateUserEntry(username, passwordHash)
-	fmt.Println(42)
 	if err.Error() == "user already exists" {
 		w.Write([]byte("Could not create user account because this username already exists."))
 		return
 	}
-	fmt.Println(err.Error())
 	if err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
