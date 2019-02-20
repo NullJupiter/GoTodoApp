@@ -29,11 +29,13 @@ func CreateUserEntry(username string, passwordHash string) error {
 	if err != nil {
 		return err
 	}
+	fmt.Println(1)
 
 	_, err = db.GetDB().Exec(fmt.Sprintf("CREATE TABLE user_%v (id SERIAL PRIMARY KEY, todo varchar(255) NOT NULL, done integer;", uid))
 	if err != nil {
 		return err
 	}
+	fmt.Println(2)
 
 	return nil
 }
