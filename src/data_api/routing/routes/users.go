@@ -37,10 +37,13 @@ func CreateUserHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprint(w, "Could not create user account because this username already exists.")
 		return
 	}
+	fmt.Println(1)
 	if err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
+	fmt.Println(2)
 
 	fmt.Fprint(w, "User has successfully been added.")
+	fmt.Println(3)
 }
