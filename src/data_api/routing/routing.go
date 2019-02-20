@@ -12,7 +12,7 @@ func InitRouting() *mux.Router {
 	router := mux.NewRouter()
 	router.HandleFunc("/", routes.IndexGetHandler).Methods(http.MethodGet)
 	router.HandleFunc("/todos", routes.TodosGetHandler).Methods(http.MethodGet)
-	router.HandleFunc("/users/{id}", routes.OneUserGetHandler).Methods(http.MethodGet)
+	router.HandleFunc("/user/{id}", routes.OneUserGetHandler).Methods(http.MethodGet)
 	router.HandleFunc("/user/create", routes.CreateUserHandler).Methods(http.MethodPost)
 
 	return router
