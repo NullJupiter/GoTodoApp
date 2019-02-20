@@ -14,28 +14,33 @@ var err error
 func CreateUserEntry(username string, passwordHash string) error {
 	// Check if user already exists
 	uidCheck, err := helper.GetUIDForUname(username)
-	if err != nil {
-		return err
-	}
 	if uidCheck == 0 {
 		return fmt.Errorf("user already exists")
 	}
+	if err != nil {
+		return err
+	}
+	fmt.Println("1")
 
 	// Create user entry in users table
 	_, err = db.GetDB().Exec("INSERT INTO users (username, passwordHash) VALUES ($1, $2);", username, passwordHash)
 	if err != nil {
 		return err
 	}
+	fmt.Println("2")
 
 	// Create user specific table for user
 	uid, err := helper.GetUIDForUname(username)
 	if err != nil {
 		return err
 	}
+	fmt.Println("3")
+
 	_, err = db.GetDB().Exec(fmt.Sprintf("CREATE TABLE user_%v (id SERIAL PRIMARY KEY, todo varchar(255) NOT NULL, done integer;", uid))
 	if err != nil {
 		return err
 	}
+	fmt.Println("4")
 
 	return nil
 }
