@@ -10,7 +10,7 @@ var err error
 func GetUIDForUname(username string) (int, error) {
 	row := db.GetDB().QueryRow("SELECT id FROM users WHERE username=$1;", username)
 	var uid int
-	err = row.Scan(&uid)
+	err = row.Scan(uid)
 	if err != nil {
 		return 0, err
 	}
