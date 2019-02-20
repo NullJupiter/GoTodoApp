@@ -19,7 +19,7 @@ func CreateUserEntry(username string, passwordHash string) error {
 	fmt.Println(1)
 
 	// Create user entry in users table
-	_, err := db.GetDB().Exec("INSERT INTO users (username, passwordHash) VALUES ($1, $2);", username, passwordHash)
+	_, err := db.DB.Exec("INSERT INTO users (username, passwordHash) VALUES ($1, $2);", username, passwordHash)
 	if err != nil {
 		return err
 	}
@@ -33,7 +33,7 @@ func CreateUserEntry(username string, passwordHash string) error {
 
 	fmt.Println(3)
 
-	_, err = db.GetDB().Exec(fmt.Sprintf("CREATE TABLE user_%v (id SERIAL PRIMARY KEY, todo varchar(255) NOT NULL, done integer NOT NULL);", uid))
+	_, err = db.DB.Exec(fmt.Sprintf("CREATE TABLE user_%v (id SERIAL PRIMARY KEY, todo varchar(255) NOT NULL, done integer NOT NULL);", uid))
 	if err != nil {
 		return err
 	}
