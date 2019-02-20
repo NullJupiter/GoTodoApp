@@ -14,6 +14,8 @@ func main() {
 		panic("Could not initialize a database instance!")
 	}
 
+	defer db.DB.Close()
+
 	// Initialize routing and get router
 	router := routing.InitRouting()
 
