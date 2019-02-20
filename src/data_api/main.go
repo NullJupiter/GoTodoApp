@@ -9,10 +9,11 @@ import (
 
 func main() {
 	// Initialize database instance
-	err := db.InitDB("postgres://localhost/todoApp?sslmode=disable")
+	err := db.InitDB("postgres://localhost/todoapp?sslmode=disable")
 	if err != nil {
 		panic("Could not initialize a database instance!")
 	}
+	defer db.DB.Close()
 
 	// Initialize routing and get router
 	router := routing.InitRouting()
