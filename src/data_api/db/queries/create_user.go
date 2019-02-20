@@ -7,8 +7,6 @@ import (
 	"github.com/NullJupiter/GoTodoApp/src/data_api/db/queries/helper"
 )
 
-var err error
-
 // CreateUserEntry function is used to create a new user entry in the database.
 // It also creates a new user specific table for the users todos.
 func CreateUserEntry(username string, passwordHash string) error {

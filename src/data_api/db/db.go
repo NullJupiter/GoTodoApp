@@ -7,13 +7,12 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var err error
 var db *sql.DB
 
 // InitDB function is used to connect to a postgres database
 func InitDB(dbURI string) error {
 	// Open database connection
-	db, err = sql.Open("postgres", dbURI)
+	db, err := sql.Open("postgres", dbURI)
 	if err != nil {
 		return err
 	}
