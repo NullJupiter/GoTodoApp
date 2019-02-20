@@ -19,8 +19,8 @@ func InitDB(dbURI string) error {
 	}
 
 	// Validate that the connection to the database is established
-	err = DB.Ping()
-	if err != nil {
+
+	if err = DB.Ping(); err != nil {
 		return err
 	}
 

@@ -8,8 +8,8 @@ import (
 )
 
 // GetUIDForUname function is used to query the id for a specific username
-func GetUIDForUname(username string) interface{} {
-	var uid interface{}
+func GetUIDForUname(username string) int {
+	var uid int
 	err := db.DB.QueryRow("SELECT id FROM users WHERE username=$1;", username).Scan(&uid)
 	fmt.Println(uid)
 	if err == sql.ErrNoRows {
