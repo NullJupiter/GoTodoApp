@@ -10,10 +10,10 @@ import (
 // InitRouting function is used to initialize routing
 func InitRouting() *mux.Router {
 	router := mux.NewRouter()
-	router.HandleFunc("/", routes.IndexGetHandler).Methods(http.MethodGet)
-	router.HandleFunc("/todos", routes.TodosGetHandler).Methods(http.MethodGet)
-	router.HandleFunc("/user/validate", routes.ValidateUserGetHandler).Methods(http.MethodPost)
-	router.HandleFunc("/user/create", routes.CreateUserHandler).Methods(http.MethodPost)
+	router.HandleFunc("/", routes.IndexGetHandler).Methods(http.MethodGet)                      // finished
+	router.HandleFunc("/todos", routes.TodosGetHandler).Methods(http.MethodGet)                 // not finished
+	router.HandleFunc("/user/validate", routes.ValidateUserGetHandler).Methods(http.MethodPost) // finished
+	router.HandleFunc("/user/create", routes.CreateUserHandler).Methods(http.MethodPost)        // finished
 
 	return router
 }
