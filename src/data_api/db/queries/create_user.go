@@ -19,7 +19,7 @@ func CreateUserEntry(username string, passwordHash string) error {
 	fmt.Println(1)
 
 	// Create user entry in users table
-	_, err = db.GetDB().Exec("INSERT INTO users (username, passwordHash) VALUES ($1, $2);", username, passwordHash)
+	_, err := db.GetDB().Exec("INSERT INTO users (username, passwordHash) VALUES ($1, $2);", username, passwordHash)
 	if err != nil {
 		return err
 	}
