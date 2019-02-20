@@ -18,6 +18,9 @@ func GetUIDForUname(username string) int {
 	if err == sql.ErrNoRows {
 		return 0
 	}
+	if err != nil {
+		return 0
+	}
 
 	return uid
 }
