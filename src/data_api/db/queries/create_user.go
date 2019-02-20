@@ -11,13 +11,11 @@ import (
 // It also creates a new user specific table for the users todos.
 func CreateUserEntry(username string, passwordHash string) error {
 	// Check if user already exists
-	uidCheck, err := helper.GetUIDForUname(username)
+	uidCheck := helper.GetUIDForUname(username)
 	if uidCheck != 0 {
 		return fmt.Errorf("user already exists")
 	}
-	if err != nil {
-		return err
-	}
+
 	fmt.Println(1)
 
 	// Create user entry in users table
@@ -28,10 +26,8 @@ func CreateUserEntry(username string, passwordHash string) error {
 	fmt.Println(2)
 
 	// Create user specific table for user
-	uid, err := helper.GetUIDForUname(username)
-	if err != nil {
-		return err
-	}
+	uid := helper.GetUIDForUname(username)
+
 	fmt.Println(3)
 
 	_, err = db.GetDB().Exec(fmt.Sprintf("CREATE TABLE user_%v (id SERIAL PRIMARY KEY, todo varchar(255) NOT NULL, done integer NOT NULL);", uid))

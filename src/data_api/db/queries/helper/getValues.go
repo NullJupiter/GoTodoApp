@@ -7,18 +7,15 @@ import (
 )
 
 // GetUIDForUname function is used to query the id for a specific username
-func GetUIDForUname(username string) (int, error) {
+func GetUIDForUname(username string) int {
 	row := db.GetDB().QueryRow("SELECT id FROM users WHERE username=$1;", username)
 	var uid int
 	err := row.Scan(&uid)
 	if err == sql.ErrNoRows {
-		return 0, nil
-	}
-	if err != nil {
-		return 0, err
+		return 0
 	}
 
-	return uid, nil
+	return uid
 }
 
 // GetUIDForUnameAndPass function is used to query the id for a specific username password combination
