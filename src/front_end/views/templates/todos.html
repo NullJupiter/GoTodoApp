@@ -27,11 +27,16 @@
                 <hr>
             </div>
             <ul>
+                {{ range .Todos }}
                 <li>
                     <div class="todo">
                         <!--todos area-->
+                        {{ if .Done }}
+                        <div class="todo-desc done">
+                        {{ else }}
                         <div class="todo-desc">
-                            <p>Buy food!</p>
+                        {{ end }}
+                            <p>{{ .Todo }}</p>
                         </div>
                         <!--actions area-->
                         <div class="actions">
@@ -40,20 +45,7 @@
                         </div>
                     </div>
                 </li>
-
-                <li>
-                    <div class="todo">
-                        <!--todos area-->
-                        <div class="todo-desc">
-                            <p>Do homework!</p>
-                        </div>
-                        <!--actions area-->
-                        <div class="actions">
-                                <a href="#" class="btn green finished"><p><i class="material-icons">check</i></p></a>
-                                <a href="#" class="btn red delete"><p><i class="material-icons">delete</i></p></a>
-                        </div>
-                    </div> 
-                </li>
+                {{ end }}
             </ul>
             
            
