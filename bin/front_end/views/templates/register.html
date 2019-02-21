@@ -1,0 +1,42 @@
+{{ define "register" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/all.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <link rel="stylesheet" href="/static/css/login_and_register.css">
+    <title>Login - Todo App</title>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="post-form">
+                <div class="title">
+                    <h1>Register</h1>
+                </div>
+                <form method="post">
+                    <input type="text" name="username" class="username-text-field" autocomplete="off" placeholder="New Username">
+                    <input type="password" name="pwd" class="pwd-text-field" autocomplete="off" placeholder="New Password">
+                    <input type="submit" value="Sign Up" class="btn orange large">
+                    <div class="bottom-text">
+                        <a href="/login" class="btn small">You can sign in here.</a>
+                    </div>
+                    <div class="error-code">
+                        {{ . }}
+                    </div>
+                </form>
+                
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        {{ template "footer" }}
+    </footer>
+</body>
+</html>
+{{ end }}

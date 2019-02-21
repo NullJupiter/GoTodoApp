@@ -1,0 +1,58 @@
+main {
+    grid-area: main;
+}
+
+main > .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main > .container > .post-form {
+    margin: 0 auto;
+    background: white;
+    box-shadow: 2px 2px 4px rgb(133, 133, 133);
+
+    margin-top: 10vh;
+    min-width: 35%;
+    background: rgb(240, 240, 240);
+}
+
+main > .container > .post-form > .title {
+    padding: 1px 1em;
+
+    background: #111;
+    color: rgb(240, 240, 240);
+}
+
+main > .container > .post-form > form {
+    display: grid;
+    grid-template-areas: "emailText" "pwdText" "submitBtn" "links" "error";
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-row-gap: 0.5em;
+    padding: 1em;
+}
+
+main > .container > .post-form > form > input {
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+main > .container > .post-form > form > .username-text-field {
+    grid-area: emailText;
+}
+
+main > .container > .post-form > form > .pwd-text-field {
+    grid-area: pwdText;
+}
+
+main > .container > .post-form > form > .bottom-text {
+    grid-area: links;
+    text-align: center;
+}
+
+main > .container > .post-form > form > .error-code {
+    grid-area: error;
+    color: #f44336;
+}

@@ -1,0 +1,64 @@
+{{ define "todos" }}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/all.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/footer.css">
+    <title>Todos App</title>
+</head>
+<body>
+    <header>
+        {{ template "header" .Username }}
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="add">
+                <form action="/add" method="post">
+                    <input type="text" name="add-text" class="add-text" autocomplete="off" placeholder="Type in the task you have to do ...">
+                    <button type="submit" class="btn green"><i class="material-icons">add</i></button>
+                </form>
+                <hr>
+            </div>
+            <ul>
+                {{ range .Todos }}
+                <li>
+                    <div class="todo">
+                        <!--todos area-->
+                        {{ if .Done }}
+                        <div class="todo-desc done">
+                        {{ else }}
+                        <div class="todo-desc">
+                        {{ end }}
+                            <p>{{ .Todo }}</p>
+                        </div>
+                        <!--actions area-->
+                        <div class="actions">
+                            {{ if .Done }}
+                            <a href="/done/{{.ID}}?finished=0" class="btn grey finished"><p><i class="material-icons">check</i></p></a>
+                            {{ else }}
+                            <a href="/done/{{.ID}}?finished=1" class="btn green finished"><p><i class="material-icons">check</i></p></a>
+                            {{ end }}
+                            <a href="/delete/{{.ID}}" class="btn red delete"><p><i class="material-icons">delete</i></p></a>
+                        </div>
+                    </div>
+                </li>
+                {{ end }}
+            </ul>
+            
+           
+        </div>
+    </main>
+
+    <footer>
+        {{ template "footer" }}
+    </footer>
+</body>
+</html>
+{{ end }}
