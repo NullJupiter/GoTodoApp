@@ -6,8 +6,6 @@ import (
 	"net/url"
 	"time"
 
-	"golang.org/x/crypto/bcrypt"
-
 	"github.com/gorilla/sessions"
 
 	"github.com/NullJupiter/GoTodoApp/src/front_end/cookiesessions"
@@ -31,16 +29,8 @@ func LoginPostHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Hash password
-	passwordByteHash, err := bcrypt.GenerateFromPassword([]byte(password), 10)
-	if err != nil {
-		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
-		return
-	}
-	passwordHash := string(passwordByteHash)
-
 	// Validate user account
-	resp, err := http.PostForm("http://localhost:8081/user/validate", url.Values{"username": {username}, "passwordHash": {passwordHash}})
+	resp, err := http.PostForm("http://localhost:8081/user/validate", url.Values{"username": {username}, "password": {password}})
 	if err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return

@@ -23,12 +23,13 @@ func MainGetHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
-	session.Options = &sessions.Options{
-		Path:   "/",
-		MaxAge: -1,
-	}
+
 	// Check if session already existed else redirect
 	if session.IsNew {
+		session.Options = &sessions.Options{
+			Path:   "/",
+			MaxAge: -1,
+		}
 		err = session.Save(r, w)
 		if err != nil {
 			http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
@@ -40,6 +41,12 @@ func MainGetHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Get username from cookie store
 	username := session.Values["username"].(string)
+	// Save the sassion
+	err = session.Save(r, w)
+	if err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
 
 	// Fetch todos for that username from API
 	resp, err := http.PostForm("http://localhost:8081/todos", url.Values{"username": {username}})

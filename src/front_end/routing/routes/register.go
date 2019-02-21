@@ -27,6 +27,7 @@ func RegisterPostHandler(w http.ResponseWriter, r *http.Request) {
 
 	if username == "" || password == "" {
 		templating.GetTemplates().ExecuteTemplate(w, "register", "You need to type in a password and a username!")
+		return
 	}
 
 	// Hash password.

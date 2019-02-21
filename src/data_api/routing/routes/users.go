@@ -10,9 +10,9 @@ import (
 func ValidateUserGetHandler(w http.ResponseWriter, r *http.Request) {
 	// Get username and passwordHash from POST data
 	username := r.FormValue("username")
-	passwordHash := r.FormValue("passwordHash")
+	password := r.FormValue("password")
 
-	isLegit, err := queries.ValidateUser(username, passwordHash)
+	isLegit, err := queries.ValidateUser(username, password)
 	if !isLegit {
 		w.Write([]byte("This user account doesn't exist!"))
 		return
