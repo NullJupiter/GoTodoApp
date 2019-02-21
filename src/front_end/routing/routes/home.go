@@ -8,6 +8,7 @@ import (
 
 	"github.com/gorilla/sessions"
 
+	"github.com/NullJupiter/GoTodoApp/src/front_end/helper"
 	"github.com/NullJupiter/GoTodoApp/src/front_end/models"
 
 	"github.com/NullJupiter/GoTodoApp/src/front_end/cookiesessions"
@@ -70,6 +71,9 @@ func MainGetHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
+
+	// Reverse todos slice
+	todos = helper.ReverseTodoSlice(todos)
 
 	// Create HomeData struct
 	var homeData models.HomeData
