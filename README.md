@@ -1,2 +1,4 @@
 # GoTodoApp
-This is a simple Go/Golang TodoApp with a user login.
+
+### Description
+This is a pretty complex todo app written in Go/Golang.
