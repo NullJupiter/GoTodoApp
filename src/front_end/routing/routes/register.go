@@ -13,5 +13,8 @@ func RegisterGetHandler(w http.ResponseWriter, r *http.Request) {
 
 // RegisterPostHandler function is used to handle POST requests on /register
 func RegisterPostHandler(w http.ResponseWriter, r *http.Request) {
+	// Get POST form values
+	username := r.FormValue("username")
+	password := r.FormValue("pwd")
 
 }

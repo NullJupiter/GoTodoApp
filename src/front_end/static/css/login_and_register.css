@@ -39,7 +39,7 @@ main > .container > .post-form > form > input {
     font-size: 18px;
 }
 
-main > .container > .post-form > form > .email-text-field {
+main > .container > .post-form > form > .username-text-field {
     grid-area: emailText;
 }
 
