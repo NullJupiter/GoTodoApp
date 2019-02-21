@@ -3,6 +3,7 @@ package routes
 import (
 	"encoding/json"
 	"net/http"
+	"strconv"
 
 	"github.com/NullJupiter/GoTodoApp/src/data_api/db/queries"
 )
@@ -25,4 +26,25 @@ func TodosPostHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 		return
 	}
+}
+
+// CreateTodoPostHandler function is used to handle POST requests on /todos/create
+func CreateTodoPostHandler(w http.ResponseWriter, r *http.Request) {
+	// Get POST data from request
+	username := r.FormValue("username")
+	todo := r.FormValue("todo")
+	done, err := strconv.Atoi(r.FormValue("done"))
+	if err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
+
+	// Insert the todo for that username
+	err = queries.InsertTodoForUname(username, todo, done)
+	if err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
+
+	w.Write([]byte("Todo successfully inserted!"))
 }
