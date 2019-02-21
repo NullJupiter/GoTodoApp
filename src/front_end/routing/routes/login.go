@@ -46,7 +46,7 @@ func LoginPostHandler(w http.ResponseWriter, r *http.Request) {
 	// Check error codes from api
 	if respBody != "This user account is a valid user account!" {
 		if respBody == "This user account doesn't exist!" {
-			templating.GetTemplates().ExecuteTemplate(w, "login", "This account doesn't exist!")
+			templating.GetTemplates().ExecuteTemplate(w, "login", "Your credentials were wrong! Please try again.")
 			return
 		}
 		return

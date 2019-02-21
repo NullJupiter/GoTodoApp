@@ -14,10 +14,10 @@
 </head>
 <body>
     <header>
-        {{ template "header" }}
+        {{ template "header" .Username }}
     </header>
 
-    <main> <!--for example /finished/{id} <- the id from struct-->
+    <main>
         <div class="container">
             <div class="add">
                 <form action="/add" method="post">
@@ -40,8 +40,12 @@
                         </div>
                         <!--actions area-->
                         <div class="actions">
-                                <a href="#" class="btn green finished"><p><i class="material-icons">check</i></p></a>
-                                <a href="#" class="btn red delete"><p><i class="material-icons">delete</i></p></a>
+                            {{ if .Done }}
+                            <a href="/done/{{.ID}}?finished=0" class="btn grey finished"><p><i class="material-icons">check</i></p></a>
+                            {{ else }}
+                            <a href="/done/{{.ID}}?finished=1" class="btn green finished"><p><i class="material-icons">check</i></p></a>
+                            {{ end }}
+                            <a href="/delete/{{.ID}}" class="btn red delete"><p><i class="material-icons">delete</i></p></a>
                         </div>
                     </div>
                 </li>

@@ -48,3 +48,48 @@ func CreateTodoPostHandler(w http.ResponseWriter, r *http.Request) {
 
 	w.Write([]byte("Todo successfully inserted!"))
 }
+
+// DonePostHandler function is used to handle POST requests on /todos/done.
+func DonePostHandler(w http.ResponseWriter, r *http.Request) {
+	// Get form values
+	username := r.FormValue("username")
+	todoID, err := strconv.Atoi(r.FormValue("todoID"))
+	if err != nil {
+		w.Write([]byte("Could not change done value of todo!"))
+		return
+	}
+	done, err := strconv.Atoi(r.FormValue("done"))
+	if err != nil {
+		w.Write([]byte("Could not change done value of todo!"))
+		return
+	}
+
+	// Insert new done data
+	err = queries.ChangeDoneValue(username, todoID, done)
+	if err != nil {
+		w.Write([]byte("Could not change done value of todo!"))
+		return
+	}
+
+	w.Write([]byte("Successfully updated done value!"))
+}
+
+// DeletePostHandler function is used to handle POST requests on /todos/delete.
+func DeletePostHandler(w http.ResponseWriter, r *http.Request) {
+	// Get form values
+	username := r.FormValue("username")
+	todoID, err := strconv.Atoi(r.FormValue("todoID"))
+	if err != nil {
+		w.Write([]byte("Could not delete todo!"))
+		return
+	}
+
+	// Delete todo
+	err = queries.DeleteTodo(username, todoID)
+	if err != nil {
+		w.Write([]byte("Could not delete todo!"))
+		return
+	}
+
+	w.Write([]byte("Todo has successfully been deleted!"))
+}

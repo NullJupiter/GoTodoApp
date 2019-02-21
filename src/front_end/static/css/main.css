@@ -59,6 +59,11 @@ main > .container > ul > li > .todo > .todo-desc {
     background: rgb(230, 230, 230);
 }
 
+main > .container > ul > li > .todo > .todo-desc.done > p {
+    color: #9e9e9e;
+    text-decoration: line-through;
+}
+
 main > .container > ul > li > .todo > .todo-desc > p {
     padding-left: 2vw;
 }
