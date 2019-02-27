@@ -13,6 +13,12 @@ func AddPostHandler(w http.ResponseWriter, r *http.Request) {
 	// Get form values
 	todo := r.FormValue("add-text")
 
+	// Check if the form value is empty
+	if todo == "" {
+		http.Redirect(w, r, "/home", http.StatusSeeOther)
+		return
+	}
+
 	// Get username from session cookie
 	session, err := cookiesessions.GetCookieSessionStore().Get(r, "login-session")
 	if err != nil {
